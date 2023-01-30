@@ -1,3 +1,3 @@
-# [Simple Counter](https://a-isaiahharvey.github.io/simple-counter-webapp/)
+# [Clock](https://a-isaiahharvey.github.io/clock-webapp/)
 
-An app that counts
+> A clock for the web
