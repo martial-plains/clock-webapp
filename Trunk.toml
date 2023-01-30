@@ -2,7 +2,7 @@
 target = "index.html"
 dist = "dist"
 release = false
-# public_url = "/clock-webapp/"
+public_url = "/clock-webapp/"
 
 [watch]
 watch = ["./index.html", "src/", "style/", "static/"]
