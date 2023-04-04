@@ -1,11 +1,12 @@
 use chrono::{Local, Timelike};
 use leptos::*;
+use wasm_bindgen::JsCast;
 
 #[component]
 fn Clock(cx: Scope) -> impl IntoView {
     let (date, set_date) = create_signal(cx, Local::now());
 
-    set_interval(
+    set_interval_with_handle(
         move || {
             set_date(Local::now());
             let hr: web_sys::HtmlElement = document()
