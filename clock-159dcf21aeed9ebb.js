@@ -201,7 +201,7 @@ function makeClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_14(arg0, arg1) {
-    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h6d5f19b6577faef1(arg0, arg1);
+    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h15726da0f5322d4d(arg0, arg1);
 }
 
 function getCachedStringFromWasm0(ptr, len) {
@@ -496,8 +496,8 @@ imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
 imports.wbg.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
-imports.wbg.__wbindgen_closure_wrapper96 = function(arg0, arg1, arg2) {
-    const ret = makeClosure(arg0, arg1, 20, __wbg_adapter_14);
+imports.wbg.__wbindgen_closure_wrapper101 = function(arg0, arg1, arg2) {
+    const ret = makeClosure(arg0, arg1, 24, __wbg_adapter_14);
     return addHeapObject(ret);
 };
 
@@ -534,7 +534,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('clock-e181fd499c4ac7b_bg.wasm', import.meta.url);
+        input = new URL('clock-159dcf21aeed9ebb_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
