@@ -3,12 +3,12 @@ use leptos::*;
 use wasm_bindgen::JsCast;
 
 #[component]
-fn Clock(cx: Scope) -> impl IntoView {
-    let (date, set_date) = create_signal(cx, Local::now());
+fn Clock() -> impl IntoView {
+    let (date, set_date) = create_signal(Local::now());
 
     set_interval_with_handle(
         move || {
-            set_date(Local::now());
+            set_date.set(Local::now());
             let hr: web_sys::HtmlElement = document()
                 .query_selector("#hr")
                 .unwrap()
@@ -29,9 +29,9 @@ fn Clock(cx: Scope) -> impl IntoView {
                 .dyn_into()
                 .unwrap();
 
-            let hh = date().hour() * 30;
-            let mm = date().minute() * 6;
-            let ss = date().second() * 6;
+            let hh = date.get().hour() * 30;
+            let mm = date.get().minute() * 6;
+            let ss = date.get().second() * 6;
 
             hr.style()
                 .set_property("transform", &format!("rotateZ({}deg)", hh + (mm / 12)))
@@ -47,31 +47,31 @@ fn Clock(cx: Scope) -> impl IntoView {
     )
     .unwrap();
 
-    view! { cx,
+    view! {
         <div>
             <div class="clock border-black dark:border-white">
                 <div class="hour">
                     {
-                        move || view! {cx, <div id="hr" class="hr before:bg-black before:dark:bg-white"></div>}
+                        move || view! { <div id="hr" class="hr before:bg-black before:dark:bg-white"></div>}
                     }
                 </div>
                 <div class="min">
                     {
-                        move || view! {cx, <div id="mn" class="mn before:bg-black before:dark:bg-white"></div>}
+                        move || view! { <div id="mn" class="mn before:bg-black before:dark:bg-white"></div>}
                     }
                 </div>
                 <div class="sec">
                     {
-                        move || view! {cx, <div id="sc" class="sc" ></div>}
+                        move || view! { <div id="sc" class="sc" ></div>}
                     }
                 </div>
             </div>
 
             <div id="digitalClock" class="text-black dark:text-white">
                 {
-                    move || view! {cx,
+                    move || view! {
 
-                        <div>{format!("{:02}:{:02}:{:02}", date().hour(), date().minute(), date().second())}</div>
+                        <div>{format!("{:02}:{:02}:{:02}", date.get().hour(), date.get().minute(), date.get().second())}</div>
                     }
                 }
                 <div id="ampm"></div>
@@ -84,5 +84,5 @@ fn main() {
     console_error_panic_hook::set_once();
     _ = console_log::init_with_level(log::Level::Info);
     console_error_panic_hook::set_once();
-    mount_to_body(|cx| view! { cx,  <Clock/> })
+    mount_to_body(|| view! {  <Clock/> })
 }
